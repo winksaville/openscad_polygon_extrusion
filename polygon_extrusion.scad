@@ -38,7 +38,7 @@ module myObject() {
 // Points from 2032c.dat in the archive: http://m-selig.ae.illinois.edu/ads/archives/coord_seligFmt.tar.gz
 // Not necessarily in the same order as in: http://m-selig.ae.illinois.edu/ads/coord/2032c.dat
 
-use <../../airfoils/openscad_tutorial_chapter9_naca.scad>
+use <submodules/openscad_airfoils/naca.scad>
 
 
 module naca_top_airfoil(chord,t,n) {

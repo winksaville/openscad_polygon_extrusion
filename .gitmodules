@@ -1,0 +1,6 @@
+[submodule "submodules/openscad_utils"]
+	path = submodules/openscad_utils
+	url = git@github.com:winksaville/openscad_utils
+[submodule "submodules/openscad_airfoils"]
+	path = submodules/openscad_airfoils
+	url = git@github.com:winksaville/openscad_airfoils
