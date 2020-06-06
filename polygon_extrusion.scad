@@ -57,7 +57,7 @@ module x(c=chord) {
 }
 //x();
 
-module offset_shell(t = 0.1, unit=1) {
+module minkowski_shell(t = 0.1, unit=1) {
   t2x = t * 2;
   difference() {
     // The "shell" what's left after stamping with the "die"
@@ -75,9 +75,10 @@ module offset_shell(t = 0.1, unit=1) {
   }
 }
 
+// Using minkowski
 thickness=0.5;
 t2x=thickness * 2;
-offset_shell(t=thickness)
+minkowski_shell(t=thickness)
   x();
 
 // The "die" so it can be visually compared with the offset_shell of x
@@ -87,7 +88,38 @@ translate([0, 10, 0]) {
   }
 }
 
-//naca_top_airfoil(50, 0.30, 100);
+// Actual airfoil
+translate([0, -10, 0]) {
+  x();
+}
+
+module airfoil_using_offset() {
+  translate([0, -20, 0])
+  linear_extrude(height = 10) {
+    difference() {
+      naca_top_airfoil(50, 0.30, 100);
+      offset(r = -0.5) {
+        naca_top_airfoil(50, 0.30, 100);
+      }
+    }
+  }
+}
+airfoil_using_offset();
+
+module twisted_box() {
+  translate([0, -45, 0])
+  linear_extrude(height = 30, twist = 90, slices = 60) {
+    difference() {
+      //offset(r = 5) {
+       square(10, center = true);
+      //}
+      offset(r = -1) {
+        square(10, center = true);
+      }
+    }
+  }
+}
+twisted_box();
 
 module naca_outline_airfoil(chord, t, n, percent) {
     outer = naca_top_coordinates(t,n);
