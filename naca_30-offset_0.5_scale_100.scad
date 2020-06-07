@@ -6,14 +6,14 @@ module naca_top_airfoil(chord,t,n) {
         polygon(points);
 }
 
-module airfoil_using_offset() {
+module airfoil_using_offset(offset=-0.3) {
   linear_extrude(height = 10) {
     difference() {
       naca_top_airfoil(100, 0.30, 2000);
-      offset(r = -0.1) {
+      offset(r = offset) {
         naca_top_airfoil(100, 0.30, 2000);
       }
     }
   }
 }
-airfoil_using_offset();
+airfoil_using_offset(-0.5);

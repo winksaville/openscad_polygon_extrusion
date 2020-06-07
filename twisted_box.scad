@@ -4,7 +4,7 @@ module twisted_box() {
     difference() {
       square(10, center = true);
       // "Die" to remove the inside
-      offset(r = -0.1) {
+      offset(r = -0.5) {
         square(10, center = true);
       }
     }
