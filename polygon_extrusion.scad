@@ -53,7 +53,7 @@ module naca_top_airfoil(chord,t,n) {
 chord=50;
 module x(c=chord) {
   linear_extrude(height=10)
-      naca_top_airfoil(c, 0.30, 100);
+      naca_top_airfoil(c, 0.30, 2000);
 }
 //x();
 
@@ -89,37 +89,22 @@ translate([0, 10, 0]) {
 }
 
 // Actual airfoil
-translate([0, -10, 0]) {
-  x();
+translate([0, 25]) {
+  x(c=100);
 }
 
 module airfoil_using_offset() {
   translate([0, -20, 0])
   linear_extrude(height = 10) {
     difference() {
-      naca_top_airfoil(50, 0.30, 100);
-      offset(r = -0.5) {
-        naca_top_airfoil(50, 0.30, 100);
+      naca_top_airfoil(100, 0.30, 2000);
+      offset(r = -0.1) {
+        naca_top_airfoil(100, 0.30, 2000);
       }
     }
   }
 }
 airfoil_using_offset();
-
-module twisted_box() {
-  translate([0, -45, 0])
-  linear_extrude(height = 30, twist = 90, slices = 60) {
-    difference() {
-      //offset(r = 5) {
-       square(10, center = true);
-      //}
-      offset(r = -1) {
-        square(10, center = true);
-      }
-    }
-  }
-}
-twisted_box();
 
 module naca_outline_airfoil(chord, t, n, percent) {
     outer = naca_top_coordinates(t,n);

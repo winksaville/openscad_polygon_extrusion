@@ -4,3 +4,6 @@
 [submodule "submodules/openscad_airfoils"]
 	path = submodules/openscad_airfoils
 	url = git@github.com:winksaville/openscad_airfoils
+[submodule "submodules/BOSL"]
+	path = submodules/BOSL
+	url = git@github.com:revarbat/BOSL.git
